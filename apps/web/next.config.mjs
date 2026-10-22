@@ -11,6 +11,9 @@ loadDotenv({ cwd: join(here, '..', '..') });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Read at build time so one image can be used in multiple environments.
+  // Set NEXT_BASE_PATH=/forms when deploying under a path prefix.
+  basePath: process.env.NEXT_BASE_PATH || '',
   reactStrictMode: true,
   // The dev-only overlay badge sits in the bottom-left corner, which is exactly
   // where the sidebar footer's icon row lands when the rail is EXPANDED — a hit
